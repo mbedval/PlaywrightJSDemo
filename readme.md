@@ -147,8 +147,66 @@ module.exports = defineConfig({
 While setting up few sample tests are added `example.spec.js` and `demo-todo-app.spec.js` . to run the test you can change `testDir: './tests',` in project file and  run test
 ```
 npx playwright test
-npx playwright show-report  // In default configuration this command is triggered automatically showing the result of the execution
+
+
 ```
+
+
+### Analysing Results artifacts
+#### Reviewing `show-report`
+
+```
+npx playwright show-report  
+// In default configuration this command is triggered automatically showing the result of the execution
+```
+
+- This report contains detail of all test executed in the test run
+- failure screenshots
+- Tags info added to test
+- Any description added as part of  [Annotation](https://playwright.dev/docs/test-annotations) 
+	- `test.skip() `: : mark the test as irrelevant. and playwright does not run such a test. 
+	- `test.fixme()`: Playwright will not run this test and ensures use this when running the test is slow or crashes
+	- `test.fail()` : mark the test as failing. It will expect to fail, but if this don't happen, playwright will complain.
+	- `test.slow()`: marks the test as slow and triples the test timeout
+	- Custom: Additional Information can be added to either  Suite-level  and test-level. All collected annotation information will be displayed in test description for test
+-
+ 
+```  
+annotation: {
+		      type: 'websocket sample',
+		      description: 'https://playwright.dev/docs/api/class-websocketroute',
+		    },
+```
+ 
+
+#### Reviewing the `trace_viewer`
+
+```
+npx playwright trace-view traceviewer.zip
+
+```
+
+##### Setup required for `traceviewer`
+
+1. enable from config file
+2. enabling only during some scenario explicitly programmatically. 
+```
+test.only('test explicit trace enable', async ( {page, context}) => {
+    await context.tracing.start( {snapshots: true, screeshots: true });
+
+    await context.tracing.stop( {path: 'test-trace.zip'});
+
+
+})
+```
+
+
+
+
+> you can open trace.zip in https://trace.playwright.dev
+
+
+
 
 #### Run `pactum` test 
 `pactum` is framework used for the API testing using JavaScript. We have install package in sample project.  
