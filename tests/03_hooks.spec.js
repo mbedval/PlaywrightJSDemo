@@ -2,6 +2,9 @@
 const { test, expect } = require('@playwright/test');
 
 
+
+
+
 test.beforeAll(async ({ browser }) => {
   const context = await browser.newContext();
   await context.tracing.start({ screenshots: true, snapshots: true });
@@ -15,7 +18,15 @@ test.afterAll(async () => {
   console.log('Tracing stopped and trace file saved');
 });
 
-test.only('website should have a title @unit', async ({ page }) => {
+
+
+test('has title', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Playwright/);
+});
+
+test('website should have a title @unit', async ({ page }) => {
   await page.goto('https://playwright.dev/');
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
