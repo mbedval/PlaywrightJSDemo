@@ -14,5 +14,8 @@
     "@types/node": "^22.9.0",
     "mocha": "^10.8.2",
     "pactum": "^3.7.3"
+  },
+  "dependencies": {
+    "@estruyf/github-actions-reporter": "^1.9.2"
   }
 }
