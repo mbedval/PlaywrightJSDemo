@@ -8,14 +8,25 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "```\r initializing playwright package\r npm init playwright@latest",
   "devDependencies": {
-    "@playwright/test": "^1.48.2",
+    "@playwright/test": "^1.53.1",
     "@types/node": "^22.9.0",
     "mocha": "^10.8.2",
     "pactum": "^3.7.3"
   },
   "dependencies": {
     "@estruyf/github-actions-reporter": "^1.9.2"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbedval/PlaywrightJSDemo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mbedval/PlaywrightJSDemo/issues"
+  },
+  "homepage": "https://github.com/mbedval/PlaywrightJSDemo#readme"
 }
